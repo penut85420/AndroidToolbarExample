@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="Black">#FF000000</color>
+    <color name="Grey0">#FF000000</color>
+    <color name="Grey1">#FF111111</color>
+    <color name="Grey2">#FF222222</color>
+    <color name="Grey3">#FF333333</color>
+    <color name="Grey4">#FF444444</color>
+    <color name="Grey5">#FF555555</color>
+    <color name="Grey6">#FF666666</color>
+    <color name="Grey7">#FF777777</color>
+    <color name="Grey8">#FF888888</color>
+    <color name="Grey9">#FF999999</color>
+    <color name="GreyA">#FFAAAAAA</color>
+    <color name="GreyB">#FFBBBBBB</color>
+    <color name="GreyC">#FFCCCCCC</color>
+    <color name="GreyD">#FFDDDDDD</color>
+    <color name="GreyE">#FFEEEEEE</color>
+    <color name="GreyF">#FFFFFFFF</color>
+    <color name="White">#FFFFFFFF</color>
+</resources>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/itemHello"
+        android:title="@string/hello" />
+
+    <item
+        android:id="@+id/itemHelp"
+        android:title="@string/help" />
+
+    <item
+        android:id="@+id/itemEnable"
+        android:checkable="true"
+        android:title="@string/check" />
+
+    <item
+        android:id="@+id/itemExplosion"
+        android:title="@string/explosion" />
+</menu>
