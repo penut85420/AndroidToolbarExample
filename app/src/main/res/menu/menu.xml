@@ -10,9 +10,9 @@
         android:title="@string/help" />
 
     <item
-        android:id="@+id/itemEnable"
+        android:id="@+id/itemDark"
         android:checkable="true"
-        android:title="@string/check" />
+        android:title="@string/dark" />
 
     <item
         android:id="@+id/itemExplosion"

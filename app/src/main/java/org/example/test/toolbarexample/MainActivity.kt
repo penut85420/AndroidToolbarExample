@@ -2,12 +2,14 @@ package org.example.test.toolbarexample
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.get
 import kotlin.system.exitProcess
 import android.view.Menu as ViewMenu
@@ -15,17 +17,22 @@ import android.view.Menu as ViewMenu
 class MainActivity : AppCompatActivity() {
 
     private var mMenu: ViewMenu? = null
-    private var isMenuChecked: Boolean = false
+    private var isDarkMode: Boolean = false
     private var pref: SharedPreferences? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        pref = getPreferences(Context.MODE_PRIVATE)
+        isDarkMode = pref!!.getBoolean("Hello", false)
+        if (isDarkMode)
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        else
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        pref = getPreferences(Context.MODE_PRIVATE)
-        isMenuChecked = pref!!.getBoolean("Hello", false)
-        Log.d(LOG_TAG, "onCreate isMenuChecked: $isMenuChecked")
+        setSupportActionBar(findViewById(R.id.toolbar))
 
+        Log.d(LOG_TAG, "onCreate isMenuChecked: $isDarkMode")
         Thread.setDefaultUncaughtExceptionHandler(ErrorHandler())
     }
 
@@ -58,7 +65,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: ViewMenu?): Boolean {
         val inflater: MenuInflater = menuInflater
         inflater.inflate(R.menu.menu, menu)
-        menu!!.getItem(2).isChecked = isMenuChecked
+        menu!!.getItem(2).isChecked = isDarkMode
         mMenu = menu
         return true
     }
@@ -66,16 +73,22 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.itemHello -> {
+
                 toast(hello("World!"))
                 true
             }
             R.id.itemHelp -> {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
                 toast("Help!")
                 true
             }
-            R.id.itemEnable -> {
+            R.id.itemDark -> {
                 item.isChecked = !item.isChecked
-                isMenuChecked = true
+                isDarkMode = item.isChecked
+                if (isDarkMode)
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                else
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
                 true
             }
             R.id.itemExplosion -> {
@@ -83,6 +96,18 @@ class MainActivity : AppCompatActivity() {
                 true
             }
             else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        when (newConfig.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
+            Configuration.UI_MODE_NIGHT_NO -> {
+                Log.d("Hello", "UI_MODE_NIGHT_NO")
+            } // Night mode is not active, we're using the light theme
+            Configuration.UI_MODE_NIGHT_YES -> {
+                Log.d("Hello", "UI_MODE_NIGHT_YES")
+            } // Night mode is active, we're using dark theme
         }
     }
 

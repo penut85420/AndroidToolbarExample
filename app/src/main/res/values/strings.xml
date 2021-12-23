@@ -2,6 +2,6 @@
     <string name="app_name">ToolbarExample</string>
     <string name="hello">Hello</string>
     <string name="help">Help</string>
-    <string name="check">Check</string>
+    <string name="dark">Dark</string>
     <string name="explosion">Explosion!</string>
 </resources>

@@ -19,11 +19,7 @@
     <color name="GreyF">#FFFFFFFF</color>
     <color name="White">#FFFFFFFF</color>
     <color name="Red">#FFFF0000</color>
-    <color name="Yellow">#FFFFFF00</color>
     <color name="Green">#FF00FF00</color>
-    <color name="Cyan">#FF00FFFF</color>
-    <color name="Blue">#FF0000FF</color>
-    <color name="Purple">#FFFF00FF</color>
-    <color name="ToolbarColor">@color/Grey4</color>
-    <color name="ToolbarBgColor">@color/GreyD</color>
+    <color name="ToolbarColor">@color/GreyC</color>
+    <color name="ToolbarBgColor">@color/Grey5</color>
 </resources>
